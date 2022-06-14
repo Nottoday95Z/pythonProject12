@@ -42,8 +42,8 @@ class Order(db.Model):
     end_date = db.Column(db.String)
     address = db.Column(db.String)
     price = db.Column(db.Integer)
-    customer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    executor_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    customer_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    executor_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def to_dict(self):
         return {
@@ -62,8 +62,8 @@ class Order(db.Model):
 class Offer(db.Model):
     __tablename__ = 'offer'
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
-    executor_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    order_id = db.Column(db.Integer, db.ForeignKey("order.id"))
+    executor_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def to_dict(self):
         return {
@@ -251,5 +251,3 @@ def offer(oid: int):
         return "", 204
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
